@@ -3,6 +3,7 @@ import {
   FuelWalletConnector,
   FuelWalletDevelopmentConnector,
   FueletWalletConnector,
+  BakoSafeConnector,
 } from '@fuels/connectors';
 import { WalletConnectConnector } from '@fuels/connectors/walletconnect';
 import { FuelProvider } from '@fuels/react';
@@ -18,8 +19,6 @@ import ReactDOM from 'react-dom/client';
 import App from './App.tsx';
 import ScreenSizeIndicator from './components/screensize-indicator.tsx';
 import './index.css';
-// import { SolanaConnector } from "@fuels/connectors/solana";
-// import { defaultSolanaConfig } from "@web3modal/solana";
 
 const queryClient = new QueryClient();
 
@@ -64,6 +63,7 @@ ReactDOM.createRoot(document.getElementById('root') as HTMLElement).render(
         fuelConfig={{
           connectors: [
             new FuelWalletConnector(),
+            new BakoSafeConnector(),
             new FueletWalletConnector(),
             new WalletConnectConnector({
               wagmiConfig,
@@ -83,7 +83,6 @@ ReactDOM.createRoot(document.getElementById('root') as HTMLElement).render(
         </Toast.Provider>
         <ScreenSizeIndicator />
       </FuelProvider>
-
       <ReactQueryDevtools initialIsOpen={false} />
     </QueryClientProvider>
   </React.StrictMode>,
